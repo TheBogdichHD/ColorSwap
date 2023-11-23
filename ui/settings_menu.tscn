@@ -1,0 +1,130 @@
+[gd_scene load_steps=6 format=3 uid="uid://duyr00ln242kp"]
+
+[ext_resource type="Script" path="res://ui/settings_menu.gd" id="1_je00k"]
+[ext_resource type="Theme" uid="uid://b7rwo2cpp08d4" path="res://ui/Kenney's UI Theme/kenneyUI-blue.tres" id="2_8jspj"]
+[ext_resource type="PackedScene" uid="uid://qlj3pcga4308" path="res://ui/volume_slider.tscn" id="3_oj4m3"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_sgeb3"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_gyqnj"]
+events = [SubResource("InputEventKey_sgeb3")]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_je00k")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0.254902, 0.870588, 0.964706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_right = 200.0
+offset_bottom = 179.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_8jspj")
+theme_override_constants/outline_size = 2
+theme_override_constants/line_spacing = 50
+theme_override_font_sizes/font_size = 24
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FullscreenButton" type="CheckBox" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_8jspj")
+text = "Fullscreen"
+
+[node name="Resolution" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_8jspj")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Resolution"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Resolution"
+
+[node name="ResolutionOptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/Resolution"]
+layout_mode = 2
+
+[node name="Master" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("2_8jspj")
+text = "Master Volume"
+
+[node name="MasterVolumeSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_oj4m3")]
+layout_mode = 2
+value = 0.65
+bus_name = "Master"
+
+[node name="Music" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme = ExtResource("2_8jspj")
+text = "Music Volume"
+
+[node name="MusicVolumeSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_oj4m3")]
+layout_mode = 2
+size_flags_vertical = 2
+value = 0.65
+bus_name = "music"
+
+[node name="SFX" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme = ExtResource("2_8jspj")
+text = "SFX Volume"
+
+[node name="SFXVolumeSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_oj4m3")]
+layout_mode = 2
+size_flags_vertical = 2
+value = 0.65
+bus_name = "sfx"
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 39.0
+offset_bottom = 19.0
+theme = ExtResource("2_8jspj")
+theme_override_font_sizes/font_size = 9
+shortcut = SubResource("Shortcut_gyqnj")
+text = "Back"
+
+[connection signal="toggled" from="MarginContainer/VBoxContainer/FullscreenButton" to="." method="_on_fullscreen_checkbox_toggled"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/Resolution/ResolutionOptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
