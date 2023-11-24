@@ -5,6 +5,7 @@ extends Node2D
 
 var can_go_to_next_level = false
 
+
 func _unhandled_input(event):
 	if event.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
@@ -15,9 +16,10 @@ func _unhandled_input(event):
 	if Input.is_action_pressed("enter_door") and can_go_to_next_level:
 		get_tree().change_scene_to_file(next_level)
 
+
 func _ready():
-	$Door.connect("door_entered", _on_door_body_entered)
-	$Door.connect("door_exited", _on_door_body_exited)
+	find_child("Door").connect("door_entered", _on_door_body_entered)
+	find_child("Door").connect("door_exited", _on_door_body_exited)
 
 
 func _on_door_body_entered():
