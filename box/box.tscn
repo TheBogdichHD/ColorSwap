@@ -8,5 +8,8 @@ collision_mask = 5
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
 position = Vector2(0, -8)
 texture = ExtResource("1_m73dy")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)

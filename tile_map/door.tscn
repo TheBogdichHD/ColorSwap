@@ -1,17 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://1ruvym3w6y4j"]
+[gd_scene load_steps=5 format=3 uid="uid://1ruvym3w6y4j"]
 
 [ext_resource type="Texture2D" uid="uid://ci8roh13i5sp5" path="res://assets/sprites/door.png" id="1_akcj0"]
+[ext_resource type="Script" path="res://tile_map/door.gd" id="1_dr68s"]
+[ext_resource type="Texture2D" uid="uid://bo3u1xpoaoabw" path="res://assets/sprites/button_show_up.png" id="3_q47ws"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12bb8"]
-size = Vector2(20, 30)
+size = Vector2(32, 32)
 
 [node name="Door" type="Area2D"]
 collision_layer = 16
+script = ExtResource("1_dr68s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_12bb8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
 texture = ExtResource("1_akcj0")
+
+[node name="Button" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(0, -23)
+texture = ExtResource("3_q47ws")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
