@@ -7,7 +7,7 @@ extends Camera2D
 @onready var camera_position = position
 @onready var camera_zoom = zoom
 
-var target_zoom = Vector2(0.3, 0.3)
+@export var target_zoom = Vector2(0.3, 0.3)
 var zoomed = true
 var zooming = false
 var moving = false

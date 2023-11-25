@@ -8,13 +8,13 @@ var can_go_to_next_level = false
 
 func _unhandled_input(event):
 	if event.is_action_pressed("restart"):
-		get_tree().reload_current_scene()
+		SceneTransition.change_scene(get_tree().current_scene.scene_file_path)
 	if event.is_action_pressed("next"):
-		get_tree().change_scene_to_file(next_level)
+		SceneTransition.change_scene(next_level)
 	if event.is_action_pressed("prev"):
-		get_tree().change_scene_to_file(prev_level)
+		SceneTransition.change_scene(prev_level)
 	if Input.is_action_pressed("enter_door") and can_go_to_next_level:
-		get_tree().change_scene_to_file(next_level)
+		SceneTransition.change_scene(next_level)
 
 
 func _ready():

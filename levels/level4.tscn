@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://5wfvmcq8k4s2"]
+[gd_scene load_steps=13 format=3 uid="uid://5wfvmcq8k4s2"]
 
 [ext_resource type="Script" path="res://levels/world.gd" id="1_c0tww"]
 [ext_resource type="PackedScene" uid="uid://bnoxmukshqhlp" path="res://player/player.tscn" id="2_pjojh"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://b2sf5mkpu2q70" path="res://button/button.tscn" id="4_1r8gm"]
 [ext_resource type="PackedScene" uid="uid://cay8wb5kef8g7" path="res://tile_map/tile_map.tscn" id="5_ahb23"]
 [ext_resource type="PackedScene" uid="uid://1ruvym3w6y4j" path="res://tile_map/door.tscn" id="6_bvqhg"]
+[ext_resource type="Texture2D" uid="uid://j60rs4fpovr6" path="res://assets/sprites/r_sprite.png" id="7_6gko0"]
+[ext_resource type="Texture2D" uid="uid://dcshcvdm4c6ea" path="res://assets/sprites/arrow.png" id="8_fr680"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7tuw"]
 size = Vector2(16, 31)
@@ -102,6 +104,16 @@ modulate = Color(1, 0, 0, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Box4"]
 position = Vector2(0, -11.5)
 shape = SubResource("RectangleShape2D_421av")
+
+[node name="RSprite" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(6.94737, -42.5263)
+texture = ExtResource("7_6gko0")
+
+[node name="Arrow" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(6.94737, -59.3684)
+texture = ExtResource("8_fr680")
 
 [editable path="Box"]
 [editable path="Box2"]

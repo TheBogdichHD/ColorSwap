@@ -72,6 +72,7 @@ shape = SubResource("RectangleShape2D_ods2q")
 
 [node name="Box2" parent="." instance=ExtResource("4_syfd5")]
 position = Vector2(-8, 64)
+scale = Vector2(1, 0.75)
 
 [node name="Sprite2D" parent="Box2" index="0"]
 modulate = Color(0, 0, 1, 1)

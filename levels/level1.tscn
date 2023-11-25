@@ -1,11 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhaqetgwr7pvm"]
+[gd_scene load_steps=12 format=3 uid="uid://bhaqetgwr7pvm"]
 
 [ext_resource type="Script" path="res://levels/world.gd" id="1_hc7an"]
+[ext_resource type="PackedScene" uid="uid://lye4tlt2wk3d" path="res://ui/scene_transition.tscn" id="2_f2m8v"]
 [ext_resource type="PackedScene" uid="uid://bnoxmukshqhlp" path="res://player/player.tscn" id="2_r3h8p"]
 [ext_resource type="PackedScene" uid="uid://b2sf5mkpu2q70" path="res://button/button.tscn" id="3_5rjcq"]
 [ext_resource type="PackedScene" uid="uid://bm86m7lcdwqls" path="res://box/box.tscn" id="4_22rxl"]
 [ext_resource type="PackedScene" uid="uid://cay8wb5kef8g7" path="res://tile_map/tile_map.tscn" id="5_peb6k"]
 [ext_resource type="PackedScene" uid="uid://1ruvym3w6y4j" path="res://tile_map/door.tscn" id="6_hv02y"]
+[ext_resource type="Texture2D" uid="uid://dcshcvdm4c6ea" path="res://assets/sprites/arrow.png" id="7_kd3io"]
+[ext_resource type="Texture2D" uid="uid://bi18rqxfm1uf" path="res://assets/sprites/swap_arrow.png" id="8_dpb2h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7tuw"]
 size = Vector2(16, 32)
@@ -38,7 +41,7 @@ position = Vector2(104, -48)
 modulate = Color(0.176471, 0.784314, 1, 1)
 
 [node name="Box" parent="CanvasGroup" instance=ExtResource("4_22rxl")]
-position = Vector2(26, 64)
+position = Vector2(40, 64)
 
 [node name="Sprite2D" parent="CanvasGroup/Box" index="0"]
 position = Vector2(0, -16)
@@ -49,7 +52,7 @@ position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_b7tuw")
 
 [node name="Box2" parent="CanvasGroup" instance=ExtResource("4_22rxl")]
-position = Vector2(-13, 64)
+position = Vector2(-8, 64)
 
 [node name="Sprite2D" parent="CanvasGroup/Box2" index="0"]
 position = Vector2(0, -32)
@@ -64,6 +67,30 @@ position = Vector2(-72, 56)
 collision_layer = 8
 objects = [NodePath("../Box"), NodePath("../Box2")]
 
+[node name="Button2" parent="CanvasGroup" node_paths=PackedStringArray("objects") instance=ExtResource("3_5rjcq")]
+position = Vector2(94, 56)
+collision_layer = 8
+objects = [NodePath("../Box"), NodePath("../Box2")]
+
+[node name="Arrow" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-72, 45)
+texture = ExtResource("7_kd3io")
+
+[node name="Arrow2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(78, -48)
+rotation = -1.5708
+texture = ExtResource("7_kd3io")
+
+[node name="SwapArrow" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(16, 36)
+texture = ExtResource("8_dpb2h")
+
+[node name="SceneTransition" parent="." instance=ExtResource("2_f2m8v")]
+
 [editable path="CanvasGroup/Box"]
 [editable path="CanvasGroup/Box2"]
 [editable path="CanvasGroup/Button"]
+[editable path="CanvasGroup/Button2"]
