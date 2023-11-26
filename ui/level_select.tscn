@@ -1,0 +1,221 @@
+[gd_scene load_steps=10 format=3 uid="uid://c7nto73xmscgv"]
+
+[ext_resource type="Script" path="res://ui/level_select.gd" id="1_jfbee"]
+[ext_resource type="Theme" uid="uid://b7rwo2cpp08d4" path="res://ui/Kenney's UI Theme/kenneyUI-blue.tres" id="2_f06lh"]
+[ext_resource type="Theme" uid="uid://cmjjylq8hforh" path="res://ui/Kenney's UI Theme/kenneyUI-red.tres" id="5_2gxdm"]
+[ext_resource type="Texture2D" uid="uid://cx6lntxl8hxsy" path="res://assets/sprites/button.png" id="6_iy4if"]
+[ext_resource type="Texture2D" uid="uid://ci8roh13i5sp5" path="res://assets/sprites/door.png" id="6_jjcny"]
+[ext_resource type="PackedScene" uid="uid://bnoxmukshqhlp" path="res://player/player.tscn" id="7_kmfd6"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_sgeb3"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_w3grn"]
+events = [SubResource("InputEventKey_sgeb3")]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_piudf"]
+size = Vector2(20, 4)
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jfbee")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0.352941, 0.45098, 0.505882, 1)
+layout_mode = 2
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button16" type="Button" parent="."]
+modulate = Color(0, 0.819608, 0.811765, 1)
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+offset_left = 252.0
+offset_top = 7.0
+offset_right = 282.0
+offset_bottom = 38.0
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 4
+text = "."
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="LevelSelect" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_f06lh")
+text = "Select Level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 15
+columns = 4
+
+[node name="Button1" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "1"
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+disabled = true
+text = "2"
+
+[node name="Button3" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+disabled = true
+text = "3"
+
+[node name="Button4" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+disabled = true
+text = "4"
+
+[node name="Button5" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+disabled = true
+text = "5"
+
+[node name="Button6" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+disabled = true
+text = "6"
+
+[node name="Button7" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+disabled = true
+text = "7"
+
+[node name="Button8" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+disabled = true
+text = "8"
+
+[node name="Button9" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+disabled = true
+text = "9"
+
+[node name="ButtonThe" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+disabled = true
+text = "The"
+
+[node name="ButtonEnd" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+disabled = true
+text = "End"
+
+[node name="ButtonQ" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
+self_modulate = Color(0, 0.819608, 0.811765, 1)
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 4
+disabled = true
+text = "?"
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 39.0
+offset_bottom = 19.0
+theme = ExtResource("5_2gxdm")
+theme_override_font_sizes/font_size = 9
+shortcut = SubResource("Shortcut_w3grn")
+text = "Back"
+
+[node name="SpecialButton" type="Area2D" parent="."]
+position = Vector2(77, 33)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="SpecialButton"]
+modulate = Color(0, 0.819608, 0.811765, 1)
+texture = ExtResource("6_iy4if")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpecialButton"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_piudf")
+
+[node name="Door" type="Sprite2D" parent="."]
+position = Vector2(51, 25)
+texture = ExtResource("6_jjcny")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(41, 41, 41, 0, 84, 0, 97, 41, 121, 41, 121, -25, 17, -26, 17, 56, 123, 55, 121, 41, 87, 41)
+
+[node name="Player" parent="." instance=ExtResource("7_kmfd6")]
+process_mode = 4
+visible = false
+position = Vector2(52, 39)
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Button1" to="." method="_on_button_pressed" binds= ["1"]]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Button2" to="." method="_on_button_pressed" binds= ["2"]]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Button3" to="." method="_on_button_pressed" binds= ["3"]]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Button4" to="." method="_on_button_pressed" binds= ["4"]]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Button5" to="." method="_on_button_pressed" binds= ["5"]]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Button6" to="." method="_on_button_pressed" binds= ["6"]]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Button7" to="." method="_on_button_pressed" binds= ["7"]]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Button8" to="." method="_on_button_pressed" binds= ["8"]]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/Button9" to="." method="_on_button_pressed" binds= ["9"]]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/ButtonThe" to="." method="_on_button_pressed" binds= ["The"]]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/ButtonEnd" to="." method="_on_button_pressed" binds= ["End"]]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GridContainer/ButtonQ" to="." method="_on_button_15_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="body_entered" from="SpecialButton" to="." method="_on_special_button_body_entered"]
+[connection signal="body_exited" from="SpecialButton" to="." method="_on_special_button_body_exited"]

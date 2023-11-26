@@ -14,7 +14,7 @@ var moving = false
 
 func _ready():
 	var triggers = []
-	for i in range(1, 10):
+	for i in range(1, 20):
 		var trigger = get_parent().find_child("CameraTrigger" + str(i))
 		if trigger != null:
 			triggers.append(trigger)

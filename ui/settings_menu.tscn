@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://duyr00ln242kp"]
+[gd_scene load_steps=7 format=3 uid="uid://duyr00ln242kp"]
 
 [ext_resource type="Script" path="res://ui/settings_menu.gd" id="1_je00k"]
 [ext_resource type="Theme" uid="uid://b7rwo2cpp08d4" path="res://ui/Kenney's UI Theme/kenneyUI-blue.tres" id="2_8jspj"]
+[ext_resource type="Theme" uid="uid://cmjjylq8hforh" path="res://ui/Kenney's UI Theme/kenneyUI-red.tres" id="3_6ir04"]
 [ext_resource type="PackedScene" uid="uid://qlj3pcga4308" path="res://ui/volume_slider.tscn" id="3_oj4m3"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_sgeb3"]
@@ -21,7 +22,7 @@ grow_vertical = 2
 script = ExtResource("1_je00k")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color(0.254902, 0.870588, 0.964706, 1)
+modulate = Color(0.352941, 0.45098, 0.505882, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -62,13 +63,13 @@ vertical_alignment = 1
 [node name="FullscreenButton" type="CheckBox" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-theme = ExtResource("2_8jspj")
+theme = ExtResource("3_6ir04")
 text = "Fullscreen"
 
 [node name="Resolution" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-theme = ExtResource("2_8jspj")
+theme = ExtResource("3_6ir04")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Resolution"]
 layout_mode = 2
@@ -120,7 +121,7 @@ offset_left = 5.0
 offset_top = 5.0
 offset_right = 39.0
 offset_bottom = 19.0
-theme = ExtResource("2_8jspj")
+theme = ExtResource("3_6ir04")
 theme_override_font_sizes/font_size = 9
 shortcut = SubResource("Shortcut_gyqnj")
 text = "Back"

@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7p8h4nnw03lp"]
+
+[ext_resource type="Script" path="res://ui/pause_menu.gd" id="1_1obda"]
+[ext_resource type="Theme" uid="uid://b7rwo2cpp08d4" path="res://ui/Kenney's UI Theme/kenneyUI-blue.tres" id="1_wgtwm"]
+[ext_resource type="Theme" uid="uid://cmjjylq8hforh" path="res://ui/Kenney's UI Theme/kenneyUI-red.tres" id="3_igdwe"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_0t168"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_frb3j"]
+events = [SubResource("InputEventKey_0t168")]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+visible = false
+script = ExtResource("1_1obda")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.615686)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_wgtwm")
+text = "Level 0"
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_igdwe")
+shortcut = SubResource("Shortcut_frb3j")
+text = "Continue"
+
+[node name="MainMenu" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_igdwe")
+text = "     main menu     "
+
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_igdwe")
+text = "exit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

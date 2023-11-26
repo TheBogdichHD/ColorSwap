@@ -1,20 +1,24 @@
 extends Node2D
 
-@export var next_level: String
-@export var prev_level: String
+@export var next_level: String = ""
 
 var can_go_to_next_level = false
 
 
 func _unhandled_input(event):
+	if Input.is_action_just_pressed("pause_menu"):
+		$PauseMenu.show()
+		get_tree().paused = true
 	if event.is_action_pressed("restart"):
 		SceneTransition.change_scene(get_tree().current_scene.scene_file_path)
-	if event.is_action_pressed("next"):
-		SceneTransition.change_scene(next_level)
-	if event.is_action_pressed("prev"):
-		SceneTransition.change_scene(prev_level)
 	if Input.is_action_pressed("enter_door") and can_go_to_next_level:
-		SceneTransition.change_scene(next_level)
+		if next_level == "res://ui/level_select.tscn":
+			Save.data["levels"]["in_menu"] = true
+			SceneTransition.change_scene("res://ui/level_select.tscn")
+		else:
+			if next_level not in Save.data["levels"]["level_unlocked"]:
+				Save.data["levels"]["level_unlocked"].append(next_level)
+			SceneTransition.change_scene("res://levels/level" + next_level + ".tscn")
 
 
 func _ready():

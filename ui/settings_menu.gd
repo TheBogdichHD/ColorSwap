@@ -42,6 +42,7 @@ func Add_Resolutions():
 		
 		if Resolutions[r] == Current_Resolution:
 			resolution_option_button.select(ID)
+			Save.data["settings"]["resolution"] = ID
 		
 		ID += 1
 
@@ -50,13 +51,16 @@ func _on_option_button_item_selected(index):
 	get_window().set_size(Resolutions[ID])
 	Set_Resolution_Text()
 	Centre_Window()
+	Save.data["settings"]["resolution"] = ID
 
 
 func _on_fullscreen_checkbox_toggled(toggled_on):
 	resolution_option_button.set_disabled(toggled_on)
 	if toggled_on:
 		get_window().set_mode(Window.MODE_FULLSCREEN)
+		Save.data["settings"]["fullscreen"] = true
 	else:
+		Save.data["settings"]["fullscreen"] = false
 		get_window().set_mode(Window.MODE_WINDOWED)
 		Centre_Window()
 	get_tree().create_timer(.05).timeout.connect(Set_Resolution_Text)
@@ -65,12 +69,6 @@ func Centre_Window():
 	var Centre_Screen = DisplayServer.screen_get_position()+DisplayServer.screen_get_size()/2
 	var Window_Size = get_window().get_size_with_decorations()
 	get_window().set_position(Centre_Screen-Window_Size/2)
-
-func _on_vsync_checkbox_toggled(toggled_on):
-	if toggled_on:
-		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-	else:
-		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 
 
 func _on_back_pressed():

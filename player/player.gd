@@ -7,14 +7,32 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var coyote_jump_timer = $CoyoteJumpTimer
 @onready var starting_position = global_position
 @onready var jump_buffer_timer = $JumpBufferTimer
+@onready var animated_sprite_2d = $AnimatedSprite2D
 
 var buffered_jump = false
 
 
 func _physics_process(delta):
 	apply_gravity(delta)
-	handle_jump()
 	var input_axis = Input.get_axis("move_left", "move_right")
+	
+	if input_axis == 0 and is_on_floor():
+		animated_sprite_2d.play("default")
+	else:
+		animated_sprite_2d.play("walk")
+	
+	if input_axis < 0:
+		animated_sprite_2d.flip_h = true
+	elif input_axis > 0:
+		animated_sprite_2d.flip_h = false
+	
+	if not is_on_floor():
+		if velocity.y < 0:
+			animated_sprite_2d.play("jump")
+		else:
+			animated_sprite_2d.play("jump")
+	handle_jump()
+	
 	handle_acceleration(input_axis, delta)
 	handle_air_acceleration(input_axis, delta)
 	apply_friction(input_axis, delta)
@@ -36,6 +54,7 @@ func handle_jump():
 			coyote_jump_timer.stop()
 			buffered_jump = false
 			velocity.y = movement_data.jump_velocity
+			$JumpSound.play()
 	if not is_on_floor():
 		if Input.is_action_just_released("jump"):
 			if velocity.y < movement_data.jump_velocity / 2:

@@ -1,11 +1,70 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnoxmukshqhlp"]
+[gd_scene load_steps=12 format=3 uid="uid://bnoxmukshqhlp"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_lregh"]
 [ext_resource type="Resource" uid="uid://dnlicywnrqcv5" path="res://player/player_data.tres" id="2_nxrop"]
-[ext_resource type="Texture2D" uid="uid://b0eacf8rtov0j" path="res://assets/sprites/player.png" id="3_nfuyg"]
+[ext_resource type="Texture2D" uid="uid://c5i3w7ai172ye" path="res://assets/sprites/ghost.png" id="4_iliuy"]
+[ext_resource type="AudioStream" uid="uid://22pyf8r6gc2v" path="res://assets/sounds/jump_2.wav" id="4_qg404"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1aihg"]
-size = Vector2(12, 30)
+size = Vector2(11, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7a56p"]
+atlas = ExtResource("4_iliuy")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jluos"]
+atlas = ExtResource("4_iliuy")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl0o5"]
+atlas = ExtResource("4_iliuy")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_317u0"]
+atlas = ExtResource("4_iliuy")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3buey"]
+atlas = ExtResource("4_iliuy")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x0lvc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7a56p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jluos")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rl0o5")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_317u0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3buey")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 22
@@ -13,12 +72,8 @@ script = ExtResource("1_lregh")
 movement_data = ExtResource("2_nxrop")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -15)
+position = Vector2(-0.5, -14)
 shape = SubResource("RectangleShape2D_1aihg")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, -25)
-texture = ExtResource("3_nfuyg")
 
 [node name="CoyoteJumpTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -26,5 +81,19 @@ one_shot = true
 
 [node name="JumpBufferTimer" type="Timer" parent="."]
 wait_time = 0.1
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qg404")
+bus = &"sfx"
+
+[node name="WalkSound" type="AudioStreamPlayer" parent="."]
+bus = &"sfx"
+
+[node name="LandSound" type="AudioStreamPlayer" parent="."]
+bus = &"sfx"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_x0lvc")
 
 [connection signal="timeout" from="JumpBufferTimer" to="." method="_on_jump_buffer_timer_timeout"]
