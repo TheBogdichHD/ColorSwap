@@ -15,6 +15,8 @@ func _unhandled_input(event):
 		if next_level == "res://ui/level_select.tscn":
 			Save.data["levels"]["in_menu"] = true
 			SceneTransition.change_scene("res://ui/level_select.tscn")
+		elif next_level == "thank you":
+			SceneTransition.change_scene_final("res://levels/thank_you.tscn")
 		else:
 			if next_level not in Save.data["levels"]["level_unlocked"]:
 				Save.data["levels"]["level_unlocked"].append(next_level)
