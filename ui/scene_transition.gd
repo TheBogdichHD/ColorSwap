@@ -13,3 +13,5 @@ func change_scene_final(target):
 	await $AnimationPlayer.animation_finished
 	get_tree().change_scene_to_file(target)
 	animation_player.play_backwards("bliss")
+	await get_tree().create_timer(7).timeout
+	animation_player.play("bliss")
