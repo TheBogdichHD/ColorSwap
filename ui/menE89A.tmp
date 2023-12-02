@@ -1,0 +1,89 @@
+[gd_scene load_steps=4 format=3 uid="uid://il0t341618jm"]
+
+[ext_resource type="Script" path="res://ui/menu.gd" id="1_2x5og"]
+[ext_resource type="Theme" uid="uid://b7rwo2cpp08d4" path="res://ui/Kenney's UI Theme/kenneyUI-blue.tres" id="2_n84fx"]
+[ext_resource type="Theme" uid="uid://cmjjylq8hforh" path="res://ui/Kenney's UI Theme/kenneyUI-red.tres" id="3_xcmei"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2x5og")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0.352941, 0.45098, 0.505882, 1)
+layout_mode = 2
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -62.0
+offset_right = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_n84fx")
+theme_override_constants/outline_size = 2
+theme_override_constants/line_spacing = 14
+theme_override_font_sizes/font_size = 25
+text = " ColorSwap"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_xcmei")
+theme_override_colors/font_pressed_color = Color(0.223529, 0.223529, 0.223529, 0.254902)
+theme_override_colors/font_hover_color = Color(0.0392157, 0.0392157, 0.0392157, 0.894118)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+text = "Play"
+
+[node name="Settings" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_xcmei")
+theme_override_colors/font_pressed_color = Color(0.156863, 0.156863, 0.156863, 0.254902)
+theme_override_colors/font_hover_color = Color(0.0392157, 0.0392157, 0.0392157, 0.894118)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+text = "Settings"
+
+[node name="Exit" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_xcmei")
+theme_override_colors/font_pressed_color = Color(0.156863, 0.156863, 0.156863, 0.254902)
+theme_override_colors/font_hover_color = Color(0.0392157, 0.0392157, 0.0392157, 0.894118)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+text = "Exit"
+
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

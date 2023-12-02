@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_lregh"]
 [ext_resource type="Resource" uid="uid://dnlicywnrqcv5" path="res://player/player_data.tres" id="2_nxrop"]
+[ext_resource type="AudioStream" uid="uid://dtxpyfbr7alw1" path="res://assets/sounds/Clean/jump_2.wav" id="3_n7xs3"]
 [ext_resource type="Texture2D" uid="uid://c5i3w7ai172ye" path="res://assets/sprites/ghost.png" id="4_iliuy"]
-[ext_resource type="AudioStream" uid="uid://22pyf8r6gc2v" path="res://assets/sounds/jump_2.wav" id="4_qg404"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1aihg"]
 size = Vector2(11, 28)
@@ -83,7 +83,8 @@ one_shot = true
 wait_time = 0.1
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_qg404")
+stream = ExtResource("3_n7xs3")
+volume_db = -15.0
 bus = &"sfx"
 
 [node name="WalkSound" type="AudioStreamPlayer" parent="."]

@@ -6,9 +6,9 @@ var default_data = {
 	"settings": {
 		"fullscreen": false,
 		"resolution": "",
-		"Master_volume": 0.6,
-		"music_volume": 0.6,
-		"sfx_volume": 0.6,
+		"Master_volume": 1.0,
+		"music_volume": 0.3,
+		"sfx_volume": 1.0,
 	},
 	"levels": {
 		"level_unlocked": ["1"],

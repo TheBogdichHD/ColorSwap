@@ -5,6 +5,7 @@ signal door_exited
 
 @onready var button = $Button
 
+
 func _on_body_entered(_body):
 	door_entered.emit()
 	button.show()

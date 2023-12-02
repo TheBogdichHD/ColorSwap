@@ -12,13 +12,15 @@ config_version=5
 
 config/name="ColorSwap"
 run/main_scene="res://ui/menu.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 SceneTransition="*res://ui/scene_transition.tscn"
 Save="*res://save/save.tscn"
+AudioPlayer="*res://audio_player.tscn"
+MusicPlayer="*res://music_player.tscn"
 
 [display]
 
@@ -28,6 +30,7 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
 
 [dotnet]
 
@@ -106,3 +109,4 @@ pause_menu={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"

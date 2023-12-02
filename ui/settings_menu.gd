@@ -2,7 +2,7 @@ extends Control
 
 @onready var full_screen_check_box = $MarginContainer/VBoxContainer/FullscreenButton
 @onready var resolution_option_button = $MarginContainer/VBoxContainer/Resolution/ResolutionOptionButton
-
+@onready var sound = preload("res://assets/sounds/button_ui.wav")
 
 var Resolutions: Dictionary = {"2560x1440":Vector2i(2560,1080),
 								"1920x1080":Vector2i(1920,1080),
@@ -72,4 +72,5 @@ func Centre_Window():
 
 
 func _on_back_pressed():
+	AudioPlayer.play_sound(sound)
 	get_tree().change_scene_to_file("res://ui/menu.tscn")

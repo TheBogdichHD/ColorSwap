@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bl7ylpsdheauq"]
+[gd_scene load_steps=9 format=3 uid="uid://bl7ylpsdheauq"]
 
 [ext_resource type="Script" path="res://levels/world.gd" id="1_tjkbh"]
 [ext_resource type="PackedScene" uid="uid://cay8wb5kef8g7" path="res://tile_map/tile_map.tscn" id="2_5rtnl"]
@@ -6,11 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://bnoxmukshqhlp" path="res://player/player.tscn" id="6_kq4mq"]
 [ext_resource type="PackedScene" uid="uid://c473e1o3x0x3j" path="res://camera/camera_2d.tscn" id="7_xnfao"]
 [ext_resource type="PackedScene" uid="uid://ddshcmc868wdv" path="res://camera/camera_trigger.tscn" id="8_dq5ph"]
+[ext_resource type="AudioStream" uid="uid://boq3hg2ebkewl" path="res://assets/sounds/the_door.wav" id="8_wc5a5"]
 [ext_resource type="PackedScene" uid="uid://c7p8h4nnw03lp" path="res://ui/pause_menu.tscn" id="9_67sxx"]
 
 [node name="Level*" type="Node2D"]
 script = ExtResource("1_tjkbh")
 next_level = "thank you"
+music_name = "res://assets/music/Kevin MacLeod - Reaching Out.mp3"
 
 [node name="TileMap1" parent="." instance=ExtResource("2_5rtnl")]
 modulate = Color(0.196078, 0.196078, 0.196078, 1)
@@ -157,6 +159,11 @@ cam_pos = Vector2(2816, 0)
 
 [node name="Door" parent="." instance=ExtResource("5_fahl7")]
 position = Vector2(2912, 48)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Door"]
+stream = ExtResource("8_wc5a5")
+autoplay = true
+bus = &"sfx"
 
 [editable path="CameraTrigger1"]
 [editable path="CameraTrigger3"]

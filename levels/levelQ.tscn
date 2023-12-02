@@ -10,6 +10,7 @@
 [node name="Level?" type="Node2D"]
 script = ExtResource("1_60t7a")
 next_level = "res://ui/level_select.tscn"
+music_name = "res://assets/music/Kevin MacLeod - Resignation.mp3"
 
 [node name="TileMap1" parent="." instance=ExtResource("2_b2pw2")]
 modulate = Color(0.196078, 0.196078, 0.196078, 1)
